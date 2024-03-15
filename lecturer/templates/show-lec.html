@@ -1,0 +1,50 @@
+{% extends 'layoutl.html' %}
+
+{% block title %}
+   <title>Show Lecturers</title>
+{% endblock %}
+
+{% block content %}
+    <center><h1>Show Lecturers</h1></center>
+    <table class="table">
+        <thead>
+          <tr>
+              <th scope="col">Lecturer ID</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Department</th>
+              <th scope="col">Major</th>
+              <th scope="col">Birth Date</th>
+              <th scope="col">Born City</th>
+              <th scope="col">Address</th>
+              <th scope="col">Postal Code</th>
+              <th scope="col">Cell Phone</th>
+              <th scope="col">Home Phone</th>
+              <th scope="col">Lecturer Courses</th>
+              <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for lecturer in obj %}
+            <tr>
+                <td>{{ lecturer.lid }}</td>
+                <td>{{ lecturer.fname }}</td>
+                <td>{{ lecturer.lname }}</td>
+                <td>{{ lecturer.department }}</td>
+                <td>{{ lecturer.major }}</td>
+                <td>{{ lecturer.birth }}</td>
+                <td>{{ lecturer.borncity }}</td>
+                <td>{{ lecturer.address }}</td>
+                <td>{{ lecturer.PostalCode }}</td>
+                <td>{{ lecturer.CPhone }}</td>
+                <td>{{ lecturer.hphone }}</td>
+                <td>{{ lecturer.lcourseids }}</td>
+                <td>
+                    <button class="btn btn-warning"><a href="{% url 'lecupdate_url' lecturer.lid %}">Update</a></button>&nbsp;&nbsp;
+                    <button class="btn btn-danger"><a href="{% url 'lecdelete_url' lecturer.lid %}">Delete</a></button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

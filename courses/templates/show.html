@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+   <title>Show Page</title>
+{% endblock %}
+
+{% block content %}
+    <center><h1>Show COURSES</h1></center>
+    <table class="table">
+        <thead>
+          <tr>
+              <th scope="col">course id</th>
+              <th scope="col">course name</th>
+              <th scope="col">department</th>
+              <th scope="col">credit</th>
+
+          </tr>
+        </thead>
+        <tbody>
+        {% for i in obj %}
+            <tr>
+                <td>{{ i.cid }}</td>
+                <td>{{ i.cname }}</td>
+                <td>{{ i.department }}</td>
+                <td>{{ i.credit }}</td>
+                <td>
+                    <button class="btn btn-warning"><a href="{% url 'update_url' i.cid %}">Update</a></button>&nbsp;&nbsp;
+                    <button class="btn btn-danger"><a href="{% url 'delete_url' i.cid %}">Delete</a></button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
